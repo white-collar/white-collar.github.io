@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <title>&ldquo;Hello World&rdquo; in neural networks: sum of two numbers without using &ldquo;plus&rdquo; &mdash; Eugene Shmorgun</title>
+  <meta name="description" content="A gentle on-ramp to neural networks: teaching a simple Python model to sum two integers without ever using the &quot;+&quot; operator, starting from linear regression and what &quot;learning&quot; actually means.">
+  <meta name="author" content="Eugene Shmorgun">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+  <link rel="stylesheet" href="../css/normalize.css">
+  <link rel="stylesheet" href="../css/style.css">
+
+  <link rel="icon" type="image/png" href="../images/favicon.png">
+
+  <link rel="canonical" href="https://white-collar.github.io/articles/neural-network-addition-without-plus.html">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Eugene Shmorgun">
+  <meta property="og:title" content="&ldquo;Hello World&rdquo; in neural networks: sum of two numbers without using &ldquo;plus&rdquo;">
+  <meta property="og:description" content="A gentle on-ramp to neural networks: teaching a simple Python model to sum two integers without ever using the &quot;+&quot; operator, starting from linear regression and what &quot;learning&quot; actually means.">
+  <meta property="og:url" content="https://white-collar.github.io/articles/neural-network-addition-without-plus.html">
+  <meta property="og:image" content="https://white-collar.github.io/articles/images/neural-network-addition/01-cover.webp">
+  <meta property="og:locale" content="en_US">
+  <meta property="article:published_time" content="2024-10-18">
+  <meta property="article:author" content="Eugene Shmorgun">
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="&ldquo;Hello World&rdquo; in neural networks: sum of two numbers without using &ldquo;plus&rdquo;">
+  <meta name="twitter:description" content="A gentle on-ramp to neural networks: teaching a simple Python model to sum two integers without ever using the &quot;+&quot; operator, starting from linear regression and what &quot;learning&quot; actually means.">
+  <meta name="twitter:image" content="https://white-collar.github.io/articles/images/neural-network-addition/01-cover.webp">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "“Hello World” in neural networks: sum of two numbers without using “plus”",
+    "description": "A gentle on-ramp to neural networks: teaching a simple Python model to sum two integers without ever using the \"+\" operator, starting from linear regression and what \"learning\" actually means.",
+    "image": "https://white-collar.github.io/articles/images/neural-network-addition/01-cover.webp",
+    "datePublished": "2024-10-18",
+    "dateModified": "2026-09-20",
+    "author": {
+      "@type": "Person",
+      "name": "Eugene Shmorgun",
+      "url": "https://white-collar.github.io/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Eugene Shmorgun",
+      "url": "https://white-collar.github.io/"
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://white-collar.github.io/articles/neural-network-addition-without-plus.html"
+    }
+  }
+  </script>
+
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="../index.html">
+        <span class="brand-mark"><span>ES</span></span>
+        <span class="brand-name">Eugene Shmorgun</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a class="nav-link" href="../index.html">Home</a>
+        <a class="nav-link is-current" href="../articles.html" aria-current="page">Articles</a>
+        <a class="nav-link" href="../contacts.html">Contacts</a>
+        <a class="btn btn-primary btn-sm" href="../contacts.html">Say hello</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="1" x2="22" y2="1" stroke-width="2"/>
+          <line x1="0" y1="8" x2="22" y2="8" stroke-width="2"/>
+          <line x1="0" y1="15" x2="22" y2="15" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <div class="wrap">
+        <a href="../index.html">Home</a>
+        <a href="../articles.html" aria-current="page">Articles</a>
+        <a href="../contacts.html">Contacts</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="article-head">
+      <div class="wrap">
+        <a class="back-link" href="../articles.html">&larr; Articles</a>
+        <span class="eyebrow" style="display:block; margin-top:22px;">Machine Learning</span>
+        <h1>&ldquo;Hello World&rdquo; in neural networks: sum of two numbers without using &ldquo;plus&rdquo;</h1>
+        <p class="article-dek">For ones who&rsquo;d like to start in machine learning &mdash; a gentle on-ramp through linear regression, before the appealing chapter on neural networks starts assuming you already know it.</p>
+        <div class="article-meta">
+          <span>October 2024</span>
+          <span>&middot;</span>
+          <span>~14 min read</span>
+          <span>&middot;</span>
+          <span>Python, TensorFlow / Keras</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <article class="prose">
+
+        <nav class="toc" aria-label="Table of contents">
+          <p class="eyebrow">Contents</p>
+          <ol>
+            <li><a href="#intro">Intro</a></li>
+            <li><a href="#what-we-are-going-to-do">What we are going to do</a></li>
+            <li><a href="#linear-regression">Linear regression</a></li>
+            <li><a href="#why-do-we-need-this">Why do we need this?</a></li>
+            <li><a href="#sum-without-plus">Sum of two integers without using &ldquo;+&rdquo; operator</a></li>
+            <li><a href="#subtract">So how to teach a neural network to subtract integers?</a></li>
+          </ol>
+        </nav>
+
+        <figure>
+          <img src="images/neural-network-addition/01-cover.webp" alt="Illustration of a person at a laptop with an abstract neural-network visualization overhead" loading="lazy">
+        </figure>
+
+        <h2 id="intro">Intro</h2>
+        <p>Here&rsquo;s what this article is about: as an IT mentor at a Ukrainian company, I&rsquo;ve had plenty of chances to notice a peculiar thing about developers. They can feel that something important is happening in machine learning and LLMs. Words like &ldquo;neural networks&rdquo; and &ldquo;generative algorithms&rdquo; come up constantly, and that triggers real curiosity about what&rsquo;s actually underneath the concept. But&hellip;</p>
+        <p>And that &ldquo;but&rdquo; can be a real barrier. If you open a machine learning textbook, you quickly realize that before you reach the appealing chapter on neural networks, you have to work through a fairly long list of chapters first &mdash; linear regression, the perceptron, and several others. So you end up with the impression that to understand what a neural network actually is, and to get that first spark of interest to explore it yourself, you have to already know all of this.</p>
+        <p>From an academic standpoint, that&rsquo;s undoubtedly necessary. If you want a holistic understanding of what machine learning is, or you need to pass a university exam, you don&rsquo;t really have a choice but to read a manual cover to cover. But if you just want to feel and touch what this &ldquo;magic&rdquo; actually does (it&rsquo;s not really magic, of course), I&rsquo;d like you to try the explanations I&rsquo;ve been using in my machine learning course for the past two years. Based on how it&rsquo;s gone so far, I&rsquo;d say most of the engineers who went through it can describe what a neural network is fairly close to how it actually works.</p>
+        <p>I won&rsquo;t pretend this explanation has strict definitions or an academic style. Instead, it&rsquo;s built around a principle familiar to most developers: when they want to start learning something new, they want to see a &ldquo;Hello World&rdquo; first. In other words, something relatively simple that still brings the essential core of the idea into the light and gives them a real shot at understanding the technology.</p>
+
+        <h2 id="what-we-are-going-to-do">What we are going to do</h2>
+        <p>There&rsquo;s a common problem: when you go looking for a simple &ldquo;Hello World&rdquo;-style example in a Machine Learning course, you&rsquo;ll most likely run into image recognition &mdash; distinguishing cats from dogs in photos. I&rsquo;m not saying that example is necessarily bad (I&rsquo;ve <a href="cats-and-dogs-image-classification.html">written a full walkthrough of exactly that one</a> myself), but in my opinion it comes with so many extra details that, at first, they end up hiding the essentials of what a neural network actually is.</p>
+        <p>So in this article, we&rsquo;ll walk through a real, working example of a simple neural network, written in Python, that learns to find the sum of two integers. I want to stress this: the code we write will not contain the actual &ldquo;+&rdquo; operation anywhere. Instead, it will be able to find the sum of two integers based on experience we give it the chance to gain.</p>
+        <p>I won&rsquo;t pretend this requires nothing from you. To be precise, the audience I have in mind is software engineers who have no machine learning experience yet, but who won&rsquo;t faint at a phrase like &ldquo;linear regression.&rdquo; They also don&rsquo;t believe that the only skill you need to write enterprise applications is being good at searching GitHub and asking ChatGPT what to do next.</p>
+
+        <h2 id="linear-regression">Linear regression</h2>
+        <p>I&rsquo;d say this is a genuinely necessary step toward understanding neural networks, because at its core, a neural network is a huge number of small tasks, and each of those tasks is, essentially, linear regression.</p>
+        <p>The explanation below doesn&rsquo;t aim to be strictly academic. It&rsquo;s designed specifically to give you a comfortable sense of understanding. After reading this article, I strongly recommend consulting more academic material.</p>
+        <p>So what do we actually mean by linear regression?</p>
+        <p>Let&rsquo;s assume we have a tabular representation of some dependency. In my courses, I suspect that the more time a person spends studying, the higher the score they get on the final exam (I really hope that example feels intuitive). To confirm this, I&rsquo;ve been gathering statistics from my students.</p>
+        <p>If your imagination, like mine, leaves something to be desired, you might want to see this dependency on a graph &mdash; even if you already vaguely feel that time spent studying should influence the final result somehow.</p>
+        <p>So let&rsquo;s plot all these points on a graph: the X-axis holds the values for &ldquo;time a student spent learning software development&rdquo; &mdash; let&rsquo;s call these values X &mdash; and the Y-axis holds &ldquo;scores students got on the exam.&rdquo;</p>
+        <p>Looking at a graph like that, it&rsquo;s pretty easy to notice that these points closely resemble a simple geometric object: a line. We can think about it this way: if we have tabular data that clearly forms a dependency describable by a line, maybe we can compress that data down into something more compact and convenient &mdash; like the equation of a line? On top of the convenience of having a formula instead of a table, we also get to answer a different kind of question: what if a person spent not 10 days studying, but 20 &mdash; what score would they get?</p>
+        <p>So what do we actually need to do? We need to draw a line that&rsquo;s as close as possible to all these points. Most students find this intuitively understandable, but I have to point out that there&rsquo;s a strict academic definition of what &ldquo;close&rdquo; means &mdash; it&rsquo;s called the Least Squares Method. If this is your first time reading about it, you should look into that method properly afterward. For now, if you&rsquo;re willing to accept &ldquo;the line is close to the points&rdquo; on faith, that&rsquo;s good enough to continue.</p>
+        <p>The algebraic representation of a line looks like this:</p>
+
+        <div class="formula">\[y = \beta_0 + \beta_1 x\]</div>
+
+        <p>&hellip;where the \(\beta\)&rsquo;s are the coefficients that define the line&rsquo;s position on the graph. So we can reformulate &ldquo;we have to draw the line so that it&rsquo;s maximally close to these points&rdquo; into a more precise statement: find values for both \(\beta\)&rsquo;s so that the line&rsquo;s equation takes the position we&rsquo;ve been calling &ldquo;close.&rdquo;</p>
+        <p>Of course, there&rsquo;s a proper way to do this, and the approach is called <strong>linear regression</strong>. I strongly believe you should read about the details of this process in more academic sources, but here I&rsquo;ll just give you the Python code that takes our table of data as input and performs the linear regression. If that sentence didn&rsquo;t tell you much, think about it this way instead: we have an input, which is tabular data, and we have an output, which is the coefficients \(\beta\). Once more:</p>
+
+        <div class="callout"><p><strong>INPUT &rarr; here something happens &rarr; OUTPUT</strong></p></div>
+
+        <p>I&rsquo;d suggest thinking about that again: something happens in the middle of this calculation process. As strange as it sounds, that&rsquo;s really the core concept behind what we call a neural network &mdash; just in a very trivial form, of course.</p>
+        <p>Another point worth discussing: what we have here is a simulation of the learning process. Let&rsquo;s clarify what we mean by &ldquo;learning&rdquo; in this context. Put simply, learning here means changing the coefficients of the linear equation. But not just changing them randomly &mdash; because learning usually implies comparing our current understanding against something we treat as ground truth. Think back to answering questions at school or university: the essence of that process was comparing the meaning you were trying to convey against your teacher&rsquo;s or professor&rsquo;s understanding of the correct answer. We have the same kind of &ldquo;ground truth&rdquo; here. If we somehow get some coefficients for the linear equation (no matter how &mdash; even picking random values works, just very inefficiently), draw the resulting line, and find that it isn&rsquo;t &ldquo;close&rdquo; to the points, we have to admit those coefficients need improving. I think this is the second concept you need to internalize to understand neural networks: we need some way to verify our result against ground truth. That verification process is exactly what we mean by &ldquo;learning.&rdquo;</p>
+        <p>To stay consistent, let&rsquo;s look at some Python code that does exactly what I just described: it calculates the coefficients of a line&rsquo;s equation using gradient descent (if you don&rsquo;t know what that is, you can look it up afterward), and it turns out that after enough calculation steps, our line ends up pretty &ldquo;close&rdquo; to our points.</p>
+
+        <pre><code>import numpy as np
+import matplotlib.pyplot as plt
+
+# Our data
+X = np.array([0.00, 0.53, 1.05, 1.58, 2.11, 2.63, 3.16, 3.68, 4.21, 4.74,
+              5.26, 5.79, 6.32, 6.84, 7.37, 7.89, 8.42, 8.95, 9.47, 10.00])
+Y = np.array([0.50, 2.93, 3.13, 3.96, 5.54, 6.60, 7.42, 8.29, 9.69, 10.70,
+              11.56, 12.75, 13.94, 14.31, 16.18, 17.21, 17.85, 18.78, 20.13, 21.26])
+
+# Normalize the features
+X_norm = (X - np.mean(X)) / np.std(X)
+
+# Add a column of ones to X for the intercept term
+X_norm = np.column_stack((np.ones_like(X_norm), X_norm))
+
+# Initialize parameters
+theta = np.zeros(2)
+
+# Set hyperparameters
+alpha = 0.01  # Learning rate
+num_iters = 1000
+
+# Gradient Descent
+for _ in range(num_iters):
+    h = np.dot(X_norm, theta)
+    gradient = np.dot(X_norm.T, (h - Y)) / len(Y)
+    theta -= alpha * gradient
+
+# Convert parameters back to original scale
+m = theta[1] / np.std(X)
+b = theta[0] - m * np.mean(X)
+
+print(f"Equation of the line: y = {m:.2f}x + {b:.2f}")
+
+# Calculate R-squared
+y_pred = m * X + b
+ss_tot = np.sum((Y - np.mean(Y))**2)
+ss_res = np.sum((Y - y_pred)**2)
+r_squared = 1 - (ss_res / ss_tot)
+print(f"R-squared value: {r_squared:.4f}")
+
+# Plotting
+plt.figure(figsize=(10, 6))
+plt.scatter(X, Y, color='blue', label='Data points')
+plt.plot(X, y_pred, color='red', label='Regression line')
+plt.xlabel('X')
+plt.ylabel('Y')
+plt.title('Linear Regression using Gradient Descent')
+plt.legend()
+plt.grid(True)
+plt.show()</code></pre>
+
+        <p>The output of this code looks like this:</p>
+
+        <pre><code>Equation of the line: y = 2.01x + 1.11</code></pre>
+
+        <p>And finally, we get to see for ourselves that this line really is pretty close to our points.</p>
+
+        <figure>
+          <img src="images/neural-network-addition/02-regression-line-plot.webp" alt="Scatter plot of data points with a red regression line fitted through them via gradient descent" loading="lazy">
+        </figure>
+
+        <h2 id="why-do-we-need-this">Why do we need this?</h2>
+        <p>Does this get us closer to understanding neural networks? My answer is yes. Let me go back once more to what we just did.</p>
+        <ul>
+          <li>We had an input: a set of data &mdash; the points, in our case.</li>
+          <li>We did something with that data and got an output.</li>
+          <li>We achieved this by changing the coefficients of the line&rsquo;s equation in a more or less clever way.</li>
+          <li>Our output looks drastically different from our input: tabular data versus a pair of numbers.</li>
+        </ul>
+        <p>What if I told you that exactly the same principle is the foundation of a neural network? Quite literally: we have an input, we do something with that input (exactly what we do is a good question, but not the subject of this article), and finally, we get an output.</p>
+        <p>Now I&rsquo;ll show you something very similar to what I just described above. We&rsquo;re going to teach our code how to sum two numbers without using Python&rsquo;s &ldquo;+&rdquo; operator. I&rsquo;m serious! We&rsquo;re going to write code that learns to sum two integers in almost exactly the same way linear regression does. Take note!</p>
+        <ul>
+          <li>We will have an input.</li>
+          <li>We&rsquo;re going to do something with this input. The details matter a lot, but not right now &mdash; &ldquo;do something&rdquo; means we&rsquo;ll change the coefficients of some mathematical model, using some approach, a pretty large number of times. Remember what we were doing with linear regression: comparing how close our line was to the points. In our case, everything is simpler &mdash; if we ask for a sum, we precisely know the correct answer (or can always calculate it).</li>
+          <li>We will have an output: some set of coefficients for a mathematical model that can accept two integers and, without actually summing them, give us an answer.</li>
+        </ul>
+        <p>Of course, this output will stay hidden from us &mdash; we&rsquo;ll only ever get to use the learned model, asking it to sum our integers for us.</p>
+
+        <h2 id="sum-without-plus">Sum of two integers without using &ldquo;+&rdquo; operator</h2>
+
+        <pre><code>import tensorflow as tf
+import numpy as np
+
+# Generate training data with a wider range
+np.random.seed(0)
+X = np.random.randint(0, 1000, size=(10000, 2))  # 10000 pairs of numbers between 0 and 999
+y = np.sum(X, axis=1)
+
+# New normalization strategy
+X_max = 1000.0
+y_max = X_max * 2
+
+X_norm = X / X_max
+y_norm = y / y_max
+
+# Define a slightly more complex model
+model = tf.keras.Sequential([
+    tf.keras.layers.Dense(64, activation='relu', input_shape=(2,)),
+    tf.keras.layers.Dense(64, activation='relu'),
+    tf.keras.layers.Dense(1)
+])
+
+# Compile the model
+model.compile(optimizer='adam', loss='mse')
+
+# Train the model
+history = model.fit(X_norm, y_norm, epochs=100, validation_split=0.2, verbose=0)
+
+# Test the model
+test_input = np.array([[400, 200]])
+test_input_norm = test_input / X_max
+prediction = model.predict(test_input_norm)
+predicted_sum = prediction[0][0] * y_max
+
+print(f"Input: {test_input[0]}")
+print(f"Predicted sum: {predicted_sum:.2f}")
+print(f"Actual sum: {np.sum(test_input[0])}")
+
+# Print final loss
+print(f"Final loss: {history.history['loss'][-1]:.6f}")
+
+# Test with more examples
+test_cases = [[5, 7], [100, 200], [400, 200], [999, 999]]
+for case in test_cases:
+    test_input = np.array([case])
+    test_input_norm = test_input / X_max
+    prediction = model.predict(test_input_norm)
+    predicted_sum = prediction[0][0] * y_max
+    print(f"\nInput: {case}")
+    print(f"Predicted sum: {predicted_sum:.2f}")
+    print(f"Actual sum: {sum(case)}")</code></pre>
+
+        <p>This article is aimed at developers, but if you&rsquo;re not one, or you&rsquo;re just reading out of curiosity, I&rsquo;ll walk through this code to emphasize the key concept behind it.</p>
+        <p>First, remember our core concept: we have input that lets us teach our model. By &ldquo;teaching,&rdquo; I mean we can compare what our model gives us against the correct value, every time, and make some adjustment to the model based on that. That&rsquo;s exactly what we mean by &ldquo;learning.&rdquo; The good news is that all of this complexity is hidden away, thanks to how nicely modern Python libraries encapsulate it.</p>
+        <p>Let&rsquo;s go step by step. First, we prepare the data for learning:</p>
+
+        <pre><code># Generate training data with a wider range
+np.random.seed(0)
+X = np.random.randint(0, 1000, size=(10000, 2))  # 10000 pairs of numbers between 0 and 999
+y = np.sum(X, axis=1)</code></pre>
+
+        <p>I don&rsquo;t think this code needs much explanation, except maybe the last line: if X is a tensor of integer pairs bounded by 1000, then y ends up holding the sum of the integers in each pair.</p>
+        <p>And&hellip; everything after that line, up until</p>
+
+        <pre><code># Train the model
+history = model.fit(X_norm, y_norm, epochs=100, validation_split=0.2, verbose=0)</code></pre>
+
+        <p>&hellip;is what we call learning. If this is your first time seeing something like this, I&rsquo;d suggest thinking about the code the following way for now (you&rsquo;ll definitely want to come back to a more academic explanation later):</p>
+        <ul>
+          <li>OK, we have 10,000 pairs of integers and their sums.</li>
+          <li>Each of these pairs goes through some equation where the unknowns are our pair of numbers, and the result of the equation is meant to be the sum of those numbers.</li>
+          <li>We feed these pairs and sums into the equation 10,000 times, and solve it a little more each time.</li>
+          <li>Our goal is to find coefficients for this equation such that, when we plug in a pair of integers in place of the unknowns, we can compare the result against the known correct answer and decide whether to keep improving our coefficients or whether they&rsquo;re good enough already.</li>
+        </ul>
+        <p>Let me walk you through this step by step:</p>
+        <ul>
+          <li>We have some equation where x and y are the unknown inputs.</li>
+          <li>We have coefficients a and b, which are also unknown at first.</li>
+          <li>We assign them some default starting values.</li>
+          <li>We plug our first pair of integers into the equation and make a prediction &mdash; in other words, we calculate this function&rsquo;s version of &ldquo;the sum.&rdquo;</li>
+          <li>Since we know the real sum for this pair (our Python code can always calculate it), we can compare how large the error is &mdash; we call this the loss.</li>
+          <li>If the loss is too big, we adjust a and b somehow.</li>
+          <li>We keep doing this for quite a while.</li>
+          <li>And there&rsquo;s a very good chance we&rsquo;ll eventually find coefficients that, for pretty much any pair of integers, give us a number close enough to their actual sum.</li>
+          <li>We&rsquo;re done.</li>
+        </ul>
+        <p>Of course, there are plenty of questions you could ask here &mdash; about the type of equation, about the mathematical method used for the calculation, about the exact steps in the Python code. But at this point, I think it&rsquo;s more important to grasp the main idea behind neural networks: we can calculate the result of some function, compare it against a known value, and adjust the function&rsquo;s parameters accordingly. That, basically, is what learning is.</p>
+        <p>Now it&rsquo;s time to test what we&rsquo;ve got. If you run the code, you&rsquo;ll get something similar to this:</p>
+
+        <pre><code>1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 85ms/step
+Input: [400 200]
+Predicted sum: 597.78
+Actual sum: 600
+Final loss: 0.000002
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 28ms/step
+
+Input: [5, 7]
+Predicted sum: 11.58
+Actual sum: 12
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 33ms/step
+
+Input: [100, 200]
+Predicted sum: 297.75
+Actual sum: 300
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 33ms/step
+
+Input: [400, 200]
+Predicted sum: 597.78
+Actual sum: 600
+1/1 ━━━━━━━━━━━━━━━━━━━━ 0s 35ms/step
+
+Input: [999, 999]
+Predicted sum: 1989.17
+Actual sum: 1998</code></pre>
+
+        <p>As you can see, in every test case (hardcoded here, of course &mdash; it&rsquo;d be well worth trying your own numbers) our answers come out pretty close to the exact ones. For example:</p>
+
+        <pre><code>Input: [100, 200]
+Predicted sum: 297.75
+Actual sum: 300</code></pre>
+
+        <p>So we can draw a cautious conclusion: despite making some errors, our network generally calculates pretty well for something that doesn&rsquo;t actually know what &ldquo;sum&rdquo; means, and only learned about it through the calculations we walked through. You might reasonably ask: why aren&rsquo;t the results exact? The full answer would take too long to unpack here, but in short &mdash; because we&rsquo;re not summing the integers, we&rsquo;re performing an approximate calculation, and approximations, by definition, can&rsquo;t be exact on a computer.</p>
+
+        <h2 id="subtract">So how to teach a neural network to subtract integers?</h2>
+        <p>Sure &mdash; and not just integers, but any numbers you&rsquo;d like your neural network to learn to work with. I&rsquo;m pretty sure you&rsquo;ve already got the idea: you generate pairs of numbers and the result of subtracting them. This time, you won&rsquo;t even have that nagging doubt some of my students raise &mdash; &ldquo;Hold on, the line&rsquo;s equation already has a plus sign in it, so isn&rsquo;t that cheating somehow?&rdquo; To be completely sure the neural network isn&rsquo;t secretly relying on magic, and is genuinely calculating subtraction fairly, you&rsquo;re free to experiment yourself. And you don&rsquo;t have to stop at subtraction &mdash; feel free to teach your neural network whatever your imagination allows: multiplication, division, solving equations, and more. It&rsquo;s a great next step to try.</p>
+        <p>At this point, you might even be ready to understand the concept behind how neural networks <a href="cats-and-dogs-image-classification.html">recognize images</a>. For example, let&rsquo;s say you have 1,000 photos of cats and 1,000 photos of dogs, and for some reason you&rsquo;d like to teach your neural network to identify whether any arbitrary photo contains a cat or a dog.</p>
+        <p>You can think about this the same way. OK, I have images of cats &mdash; that&rsquo;s my input. For every one of these images, I know exactly what&rsquo;s depicted in it. So maybe the specific combination of pixels that makes up a cat, in any given case, can give me some numeric characteristic that identifies &ldquo;cat-ness&rdquo;? Finding that characteristic is a genuinely hard question, but if we manage to find it, it means we can describe any cat using some sequence of values. If we then take any unknown image and calculate that same characteristic again, we can compare the two results with some degree of confidence and say: if the unknown image&rsquo;s values are reasonably close to the values I got while training my network, then maybe this unknown image contains a cat too! There we go.</p>
+        <p>You can obviously extend this approach to almost anything where you can spot the same pattern: we have an input, we have a desired output, and we can verify how good our output is. After walking through this with students, I usually propose the following: pretty much everyone knows what a quadratic equation is. Nothing stops you now from training a neural network to learn how to solve one. All you need is a list of coefficients, and the roots that correspond to each set of coefficients. Sure, it&rsquo;s a bit harder than simply summing integers, but it&rsquo;s more than realistic. So go ahead and give it a try!</p>
+
+      </article>
+    </div>
+
+    <div class="article-nav">
+      <a class="back-link" href="../articles.html">&larr; Back to Articles</a>
+    </div>
+
+  </main>
+
+  <div class="contact-band">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Get in touch</span>
+        <h2>Always happy to talk shop.</h2>
+      </div>
+      <div class="contact-band-links">
+        <a class="email" href="mailto:eugen.shmorgun@gmail.com">eugen.shmorgun@gmail.com</a>
+        <div class="row">
+          <a class="secondary" href="https://github.com/white-collar" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="secondary" href="https://t.me/WhiteCollar" target="_blank" rel="noopener noreferrer">Telegram</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="copyright">&copy; 2026 Eugene Shmorgun</span>
+    </div>
+  </footer>
+
+  <script src="../js/nav.js" defer></script>
+</body>
+</html>
