@@ -482,6 +482,37 @@ h1, h2, h3 {
 }
 .back-link:hover { text-decoration: underline; }
 
+.share-row { display: flex; align-items: center; gap: 12px; }
+.share-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-right: 2px;
+}
+.share-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid var(--line);
+  color: var(--ink-soft);
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease;
+}
+.share-link:hover { color: var(--accent); border-color: var(--accent); }
+.share-link svg { width: 16px; height: 16px; }
+.share-copy .icon-check { display: none; }
+.share-copy.is-copied .icon-link { display: none; }
+.share-copy.is-copied .icon-check { display: block; }
+.share-copy.is-copied { color: var(--accent); border-color: var(--accent); }
+
 /* Responsive */
 @media (max-width: 860px) {
   .hero .wrap { grid-template-columns: 1fr; gap: 32px; }
