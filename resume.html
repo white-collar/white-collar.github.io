@@ -2,79 +2,95 @@
 <html lang="en">
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Eugene Shmorgun</title>
   <meta name="description" content="Resume and work history of Eugene Shmorgun, software engineer.">
   <meta name="author" content="Eugene Shmorgun">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  ––––––––––––––––––––––––––––––––––––––––––––––––
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
--->
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
 
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
 <body>
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-       <nav aria-label="Primary">
-       <ul class="top-menu">
-        <li><a class="menu" href="index.html">Home</a></li>
-        <li><a class="menu" href="articles.html">Articles</a></li>
-        <li><a class="menu" href="contacts.html">Contacts</a></li>
-        <li><a class="menu" href="resume.de.html" hreflang="de" lang="de">DE</a></li>
-      </ul>
-       </nav>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><span>ES</span></span>
+        <span class="brand-name">Eugene Shmorgun</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a class="nav-link" href="index.html">Home</a>
+        <a class="nav-link" href="articles.html">Articles</a>
+        <a class="nav-link" href="contacts.html">Contacts</a>
+        <span class="lang-switch">
+          <a class="is-current" href="resume.html">EN</a>
+          <span>/</span>
+          <a href="resume.de.html" hreflang="de" lang="de">DE</a>
+        </span>
+        <a class="btn btn-primary btn-sm" href="contacts.html">Say hello</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="1" x2="22" y2="1" stroke-width="2"/>
+          <line x1="0" y1="8" x2="22" y2="8" stroke-width="2"/>
+          <line x1="0" y1="15" x2="22" y2="15" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <div class="wrap">
+        <a href="index.html">Home</a>
+        <a href="articles.html">Articles</a>
+        <a href="contacts.html">Contacts</a>
+        <span class="lang-switch">
+          <a class="is-current" href="resume.html">EN</a>
+          <span>/</span>
+          <a href="resume.de.html" hreflang="de" lang="de">DE</a>
+        </span>
       </div>
     </div>
-  </div>
+  </header>
 
- <main>
- <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-      <table class="u-full-width">
-  <thead>
-    <tr>
-      <th>Nov, 11 - Jan, 2013: Software engineer in smetner.com</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>
-      Project Advisory World  - <a href="http://smetner.com/portfolio/advisory-world" target="_blank" rel="noopener noreferrer">http://smetner.com/portfolio/advisory-world</a>.
-      <ul >
-      	<li class="clear">Technologies: J2EE, Spring MVC, Hibernate, JasperReports, JavaScript.</li>
-      	<li class="clear">Responsibilities: Adding new features and support.</li>
-      </ul> 
-      </td>
-    </tr>
-  </tbody>
-</table>
+  <main>
+
+    <div class="page-head">
+      <div class="wrap">
+        <h1>Resume</h1>
       </div>
     </div>
-  </div>
- </main>
- 
-<div class="footer">Eugene Shmorgun, 2026</div>
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <section class="section">
+      <div class="wrap">
+        <div class="resume-entry">
+          <h3>Nov, 11 – Jan, 2013: Software engineer in smetner.com</h3>
+          <p>Project Advisory World – <a href="http://smetner.com/portfolio/advisory-world" target="_blank" rel="noopener noreferrer">http://smetner.com/portfolio/advisory-world</a>.</p>
+          <ul>
+            <li><strong>Technologies:</strong> J2EE, Spring MVC, Hibernate, JasperReports, JavaScript.</li>
+            <li><strong>Responsibilities:</strong> Adding new features and support.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="copyright">© 2026 Eugene Shmorgun</span>
+      <span class="lang-switch">
+        <a class="is-current" href="resume.html">EN</a>
+        <span>/</span>
+        <a href="resume.de.html" hreflang="de" lang="de">DE</a>
+      </span>
+    </div>
+  </footer>
+
+  <script src="js/nav.js" defer></script>
 </body>
 </html>

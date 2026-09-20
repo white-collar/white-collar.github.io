@@ -2,93 +2,134 @@
 <html lang="de">
 <head>
 
-  <!-- Basic Page Needs
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Artikel</title>
   <meta name="description" content="Publikationen und Programmierartikel von Eugene Shmorgun, einschließlich wissenschaftlicher Arbeiten und Software-Beiträge.">
   <meta name="author" content="Eugene Shmorgun">
-
-  <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <!-- FONT
-  ––––––––––––––––––––––––––––––––––––––––––––––––––
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
--->
-  <!-- CSS
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
   <link rel="stylesheet" href="css/normalize.css">
-  <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="css/style.css">
 
-  <!-- Favicon
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="icon" type="image/png" href="images/favicon.png">
 
 </head>
 <body>
 
-  <!-- Primary Page Layout
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-       <nav aria-label="Primary">
-       <ul class="top-menu">
-        <li><a class="menu" href="index.de.html">Startseite</a></li>
-        <li><a class="menu" href="articles.de.html" aria-current="page">Artikel</a></li>
-        <li><a class="menu" href="contacts.de.html">Kontakt</a></li>
-        <li><a class="menu" href="articles.html" hreflang="en" lang="en">EN</a></li>
-      </ul>
-       </nav>
+  <header class="site-header">
+    <div class="wrap">
+      <a class="brand" href="index.de.html">
+        <span class="brand-mark"><span>ES</span></span>
+        <span class="brand-name">Eugene Shmorgun</span>
+      </a>
+      <nav class="nav-desktop" aria-label="Primary">
+        <a class="nav-link" href="index.de.html">Startseite</a>
+        <a class="nav-link is-current" href="articles.de.html" aria-current="page">Artikel</a>
+        <a class="nav-link" href="contacts.de.html">Kontakt</a>
+        <span class="lang-switch">
+          <a href="articles.html" hreflang="en" lang="en">EN</a>
+          <span>/</span>
+          <a class="is-current" href="articles.de.html">DE</a>
+        </span>
+        <a class="btn btn-primary btn-sm" href="contacts.de.html">Hallo sagen</a>
+      </nav>
+      <button type="button" class="nav-toggle" aria-label="Menü umschalten" aria-expanded="false">
+        <svg width="22" height="16" viewBox="0 0 22 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="1" x2="22" y2="1" stroke-width="2"/>
+          <line x1="0" y1="8" x2="22" y2="8" stroke-width="2"/>
+          <line x1="0" y1="15" x2="22" y2="15" stroke-width="2"/>
+        </svg>
+      </button>
+    </div>
+    <div class="mobile-menu">
+      <div class="wrap">
+        <a href="index.de.html">Startseite</a>
+        <a href="articles.de.html" aria-current="page">Artikel</a>
+        <a href="contacts.de.html">Kontakt</a>
+        <span class="lang-switch">
+          <a href="articles.html" hreflang="en" lang="en">EN</a>
+          <span>/</span>
+          <a class="is-current" href="articles.de.html">DE</a>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <div class="page-head">
+      <div class="wrap">
+        <h1>Artikel</h1>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Wissenschaftliche Artikel</h2>
+        </div>
+        <ul class="list-plain">
+          <li>
+            Могильный С.Г., Шоломицький А.А., Шморгун Є.І. Трьохкоординатний вимірювальний комплекс «Визир 3D» / Наукові праці ДонНТУ: Серія гірничо-геологічна. Вип. 9(143). – Донецьк: ДонНТУ, 2009. – С.13–25. (<a href="http://www.nbuv.gov.ua/old_jrn/natural/Npdntu_gg/2009_9/articles/Mogilnij1.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/vizir3d.pdf">Spiegel</a>)
+          </li>
+          <li>
+            Могильний С.Г. Проект автоматизованої системи геодезичного моніторінгу стадіону / С.Г.Могильный, А.А. Шоломицький, Є.І. Шморгун // Наукові праці ДонНТУ. – 2010. - №12(173). – С.3-13. (<a href="http://www.nbuv.gov.ua/old_jrn/natural/sdgn/2010_1/36.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/36.pdf">Spiegel</a>)
+          </li>
+          <li>
+            Комплексна інспекція обертових печей в процесі експлуатації / С.Г. Могильний, А.А.Шоломицький, Є.І. Шморгун, Є.Ж. Кужнєнков // Вісник Криворізького технічного університету. –2011. – Вип.28. – С. 43-46. (<a href="http://knu.edu.ua/Files/V_28_2011/11.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/11.pdf">Spiegel</a>)
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Programmierung</h2>
+        </div>
+        <ul class="list-plain">
+          <li><a href="https://habrahabr.ru/post/111080/" target="_blank" rel="noopener noreferrer">Покроковий опис створення простого застосунку на Samsung Bada.</a></li>
+          <li><a href="https://habrahabr.ru/post/112334/" target="_blank" rel="noopener noreferrer">Картографічні можливості Samsung Bada.</a></li>
+          <li><a href="https://habrahabr.ru/post/112451/" target="_blank" rel="noopener noreferrer">Картографічні можливості Samsung Bada, часть 2.</a></li>
+          <li><a href="https://dou.ua/forums/topic/55562/" target="_blank" rel="noopener noreferrer">«Hello world» у світі нейронних мереж: як навчити мережу додавати числа</a></li>
+          <li><a href="https://medium.com/@eugen.shmorgun/hello-world-in-neural-networks-sum-of-two-numbers-without-using-plus-d7eaa314eff2" target="_blank" rel="noopener noreferrer">“Hello World” in neural networks: sum of two numbers without using “plus”</a></li>
+        </ul>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="contact-band">
+    <div class="wrap">
+      <div>
+        <span class="eyebrow">Kontakt</span>
+        <h2>Ich spreche gerne über meine Arbeit.</h2>
+      </div>
+      <div class="contact-band-links">
+        <a class="email" href="mailto:eugen.shmorgun@gmail.com">eugen.shmorgun@gmail.com</a>
+        <div class="row">
+          <a class="secondary" href="https://github.com/white-collar" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a class="secondary" href="https://t.me/WhiteCollar" target="_blank" rel="noopener noreferrer">Telegram</a>
+        </div>
       </div>
     </div>
   </div>
 
- <main>
- <div class="container">
-    <div class="row">
-      <div class="twelve columns">
-      <h2>Wissenschaftliche Artikel</h2>
-      <ul>
-        <li>
-          Могильный С.Г., Шоломицький А.А., Шморгун Є.І. Трьохкоординатний вимірювальний комплекс «Визир 3D» / Наукові праці ДонНТУ: Серія гірничо-геологічна. Вип. 9(143). – Донецьк: ДонНТУ, 2009. – С.13–25. (<a href="http://www.nbuv.gov.ua/old_jrn/natural/Npdntu_gg/2009_9/articles/Mogilnij1.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/vizir3d.pdf">Spiegel</a>)
-        </li>
-        <li>
-          Могильний С.Г. Проект автоматизованої системи геодезичного моніторінгу стадіону / С.Г.Могильный, А.А. Шоломицький, Є.І. Шморгун // Наукові праці ДонНТУ. – 2010. - №12(173). – С.3-13. (<a href="http://www.nbuv.gov.ua/old_jrn/natural/sdgn/2010_1/36.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/36.pdf">Spiegel</a>)
-        </li>
-        <li>
-          Комплексна інспекція обертових печей в процесі експлуатації / С.Г. Могильний, А.А.Шоломицький, Є.І. Шморгун, Є.Ж. Кужнєнков // Вісник Криворізького технічного університету. –2011. – Вип.28. – С. 43-46. (<a href="http://knu.edu.ua/Files/V_28_2011/11.pdf" target="_blank" rel="noopener noreferrer">pdf</a>, <a href="data/11.pdf">Spiegel</a>)
-        </li>
-      </ul>
-      <br/>
-      <h2>Programmierung</h2>
-       <ul>
-        <li class="clear">
-          <a href="https://habrahabr.ru/post/111080/" target="_blank" rel="noopener noreferrer">Покроковий опис створення простого застосунку на Samsung Bada.</a>
-        </li>
-        <li class="clear">
-         <a href="https://habrahabr.ru/post/112334/" target="_blank" rel="noopener noreferrer">Картографічні можливості Samsung Bada.</a>
-        </li>
-        <li class="clear">
-          <a href="https://habrahabr.ru/post/112451/" target="_blank" rel="noopener noreferrer">Картографічні можливості Samsung Bada, часть 2.</a>
-        </li>
-        <li class="clear">
-          <a href="https://dou.ua/forums/topic/55562/" target="_blank" rel="noopener noreferrer">«Hello world» у світі нейронних мереж: як навчити мережу додавати числа</a>
-        </li>
-        <li class="clear">
-          <a href="https://medium.com/@eugen.shmorgun/hello-world-in-neural-networks-sum-of-two-numbers-without-using-plus-d7eaa314eff2" target="_blank" rel="noopener noreferrer">“Hello World” in neural networks: sum of two numbers without using “plus”</a>
-        </li>
-      </ul>
-
-      </div>
+  <footer class="site-footer">
+    <div class="wrap">
+      <span class="copyright">© 2026 Eugene Shmorgun</span>
+      <span class="lang-switch">
+        <a href="articles.html" hreflang="en" lang="en">EN</a>
+        <span>/</span>
+        <a class="is-current" href="articles.de.html">DE</a>
+      </span>
     </div>
-  </div>
- </main>
+  </footer>
 
-<div class="footer">Eugene Shmorgun, 2026</div>
-<!-- End Document
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/nav.js" defer></script>
 </body>
 </html>
