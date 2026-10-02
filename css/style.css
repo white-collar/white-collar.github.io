@@ -533,3 +533,8 @@ h1, h2, h3 {
   .prose pre { font-size: 12.5px; padding: 14px 16px; }
   .prose p, .prose ul, .prose ol { font-size: 16px; }
 }
+
+/* Textbook card on the Articles page */
+.card-textbook { max-width: 760px; }
+.card-textbook h3 { flex-grow: 0; font-size: 24px; }
+.card-textbook p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
