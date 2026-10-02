@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Метод найменших квадратів — інтерактивний підручник</title>
+    <meta name="description" content="Інтерактивний підручник з методу найменших квадратів для початківців: від надлишкових вимірів у геодезії до лінійної регресії в машинному навчанні." />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M3 26 L29 8' stroke='%232f5fd0' stroke-width='3'/%3E%3Ccircle cx='8' cy='19' r='3'/%3E%3Ccircle cx='16' cy='19' r='3'/%3E%3Ccircle cx='24' cy='10' r='3'/%3E%3C/svg%3E" />
+    <script type="module" crossorigin src="./assets/index-CMNyTAi9.js"></script>
+    <link rel="modulepreload" crossorigin href="./assets/common-DcWhnavj.js">
+    <link rel="stylesheet" crossorigin href="./assets/common-DgYeZ04L.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="inner">
+        <a class="brand" href="./index.html">
+          <svg width="22" height="22" viewBox="0 0 32 32" aria-hidden="true"><path d="M3 26 L29 8" stroke="currentColor" stroke-width="3" /><circle cx="8" cy="19" r="3" fill="currentColor" /><circle cx="16" cy="19" r="3" fill="currentColor" /><circle cx="24" cy="10" r="3" fill="currentColor" /></svg>
+          Метод найменших квадратів
+        </a>
+        <nav><a href="#contents">Зміст</a></nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="eyebrow">Інтерактивний підручник</p>
+        <h1>Метод найменших квадратів: від геодезії до машинного навчання</h1>
+        <p class="lead">
+          Вимірювання завжди трохи суперечать одне одному. Цей підручник показує, як з цих суперечностей отримати
+          найкращу відповідь. Ми пройдемо шлях від трьох вимірів рулеткою до лінійної регресії, що стоїть в основі
+          машинного навчання.
+        </p>
+      </section>
+
+      <h2>Як влаштований кожен розділ</h2>
+      <ol class="structure-list">
+        <li><strong>Проблема.</strong> Конкретна задача, яку не вдається розв'язати «в лоб».</li>
+        <li><strong>Інтуїція та інтерактив.</strong> Рухайте повзунки й точки та дивіться, що відбувається.</li>
+        <li><strong>Рішення.</strong> Метод і пояснення, чому обираємо саме його, зокрема тому, що його легко запрограмувати.</li>
+        <li><strong>🔍 Хочете більше подробиць?</strong> Розгорнутий блок з виведеннями та тонкощами. Основний текст можна читати без нього.</li>
+        <li><strong>Зв'язок з ML.</strong> Як те саме називається і використовується в машинному навчанні.</li>
+        <li><strong>Код</strong> на Python і JavaScript (JS можна запустити просто на сторінці).</li>
+        <li><strong>Місток</strong> до наступного розділу: яке питання лишилося відкритим.</li>
+      </ol>
+      <p>
+        Потрібна шкільна алгебра і поняття похідної. Лінійну алгебру (матриці, ранг, проєкції) пояснюємо
+        по ходу, в міру потреби.
+      </p>
+
+      <h2 id="contents">Зміст</h2>
+      <ol class="toc-list">
+        <li>
+          <span class="n">1</span>
+          <a class="t" href="./chapters/01-overdetermined.html">Коли рівнянь більше, ніж невідомих</a>
+          <span class="d">Надлишкові виміри, нев'язка, несумісні системи. Пряма через три точки.</span>
+        </li>
+        <li>
+          <span class="n">2</span>
+          <a class="t" href="./chapters/02-best-solution.html">Що означає «найкращий» розв'язок?</a>
+          <span class="d">Критерії якості: сума модулів, максимум, сума квадратів. Функції втрат.</span>
+        </li>
+        <li>
+          <span class="n">3</span>
+          <a class="t" href="./chapters/03-bowl.html">Мінімум помилки: чаша</a>
+          <span class="d">Поверхня S(a, b) — параболоїд з єдиним мінімумом. Ландшафт функції втрат.</span>
+        </li>
+        <li>
+          <span class="n">4</span>
+          <a class="t" href="./chapters/04-normal-equations.html">Нормальні рівняння</a>
+          <span class="d">Прирівнюємо похідні до нуля й отримуємо лінійну систему.</span>
+        </li>
+        <li>
+          <span class="n">5</span>
+          <a class="t" href="./chapters/05-geometry.html">Матричний погляд і геометрія</a>
+          <span class="d">AᵀAθ = Aᵀy. Розв'язок як ортогональна проєкція.</span>
+        </li>
+        <li>
+          <span class="n">6</span>
+          <a class="t" href="./chapters/06-programming.html">Програмуємо МНК</a>
+          <span class="d">Алгоритм, QR та SVD, чому не варто обертати AᵀA.</span>
+        </li>
+        <li>
+          <span class="n">7</span>
+          <a class="t" href="./chapters/07-beyond-lines.html">Не лише прямі</a>
+          <span class="d">Лінійність за параметрами: поліноми, коло, експонента. Перенавчання.</span>
+        </li>
+        <li>
+          <span class="n">8</span>
+          <a class="t" href="./chapters/08-geodesy.html">Геодезія всерйоз</a>
+          <span class="d">Ваги, зрівнювання нівелірної мережі, трилатерація і метод Гаусса–Ньютона.</span>
+        </li>
+        <li>
+          <span class="n">9</span>
+          <a class="t" href="./chapters/09-statistics.html">Чому саме квадрати: статистика</a>
+          <span class="d">Гауссів шум, максимальна правдоподібність, теорема Гаусса–Маркова, еліпс похибок.</span>
+        </li>
+        <li>
+          <span class="n">10</span>
+          <a class="t" href="./chapters/10-machine-learning.html">МНК і машинне навчання</a>
+          <span class="d">MSE, градієнтний спуск, ridge-регресія, викиди, Huber і RANSAC.</span>
+        </li>
+        <li>
+          <span class="n">11</span>
+          <a class="t" href="./chapters/11-summary.html">Підсумок</a>
+          <span class="d">Шпаргалка, вправи, куди рухатися далі: фільтр Калмана, bundle adjustment.</span>
+        </li>
+      </ol>
+
+      <div class="callout ml">
+        <span class="callout-title">Наскрізна лінія: машинне навчання</span>
+        Зв'язок з ML не відкладено до розділу 10, він проходить через увесь підручник. Пряма через точки — це лінійна
+        регресія. «Чаша» помилки з розділу 3 — це ландшафт функції втрат. Підбір полінома в розділі 7 показує
+        перенавчання. Статистика з розділу 9 дає ймовірнісне обґрунтування, на якому стоїть ML.
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="inner">Інтерактивний підручник з методу найменших квадратів.</div>
+    </footer>
+
+  </body>
+</html>
