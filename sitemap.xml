@@ -51,6 +51,30 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://white-collar.github.io/articles.fr.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://white-collar.github.io/articles.html"/>
   </url>
+  <url>
+    <loc>https://white-collar.github.io/projects.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://white-collar.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://white-collar.github.io/projects.de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://white-collar.github.io/projects.fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://white-collar.github.io/projects.html"/>
+  </url>
+  <url>
+    <loc>https://white-collar.github.io/projects.de.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://white-collar.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://white-collar.github.io/projects.de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://white-collar.github.io/projects.fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://white-collar.github.io/projects.html"/>
+  </url>
+  <url>
+    <loc>https://white-collar.github.io/projects.fr.html</loc>
+    <lastmod>2026-10-07</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://white-collar.github.io/projects.html"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://white-collar.github.io/projects.de.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://white-collar.github.io/projects.fr.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://white-collar.github.io/projects.html"/>
+  </url>
 
   <url>
     <loc>https://white-collar.github.io/articles/cats-and-dogs-image-classification.html</loc>
