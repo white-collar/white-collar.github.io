@@ -538,3 +538,4 @@ h1, h2, h3 {
 .card-textbook { max-width: 760px; }
 .card-textbook h3 { flex-grow: 0; font-size: 24px; }
 .card-textbook p { margin: 0; color: var(--ink-soft); line-height: 1.6; }
+.card-links { display: flex; flex-wrap: wrap; gap: 8px 24px; }
